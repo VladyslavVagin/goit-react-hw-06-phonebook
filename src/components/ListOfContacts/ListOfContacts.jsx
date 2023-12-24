@@ -1,30 +1,24 @@
 import css from './ListOfContacts.module.css';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const ListOfContacts = (arrayCont, deleteContact) => {
+const ListOfContacts = () => {
+  const contacts = useSelector(state => state.contacts)
   return (
     <div>
       <ul className={css.contactList}>
-        {arrayCont.map(contact => {
-          const { id, name, number } = contact;
-          return (
-            <li key={id} className={css.user}>
-              <h3>{name}:</h3>
-              <p>{number}</p>
-              <button type="button" className={css.deleteBtn} onClick={deleteContact} id={id}>
-                Delete
-              </button>
-            </li>
-          );
+        {contacts.map(contact => {
+          return <li className={css.user} key={contact.id}>
+          <h3>{contact.name}</h3>
+          <p>{contact.number}</p>
+          <button type="button" className={css.deleteBtn} >
+            Delete
+          </button>
+        </li>
         })}
       </ul>
     </div>
   );
 };
 
-ListOfContacts.propTypes = {
-  arrayCont: PropTypes.array.isRequired,
-  deleteContact: PropTypes.func.isRequired,
-};
 
 export default ListOfContacts;
