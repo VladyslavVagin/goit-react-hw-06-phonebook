@@ -5,9 +5,9 @@ import { deleteUser } from '../../redux/contactsSlice';
 const ListOfContacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter.query);
+  const filter = useSelector(state => state.filter);
 
-  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter));
+  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.query));
 
   return (
     <div>
