@@ -1,12 +1,11 @@
 import AddContactForm from './AddContactForm/AddContactForm';
 import ListOfContacts from './ListOfContacts/ListOfContacts';
-import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
 import Filter from './Filter/Filter';
 import { useEffect, useState } from 'react';
 
 export const App = () => {
  const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('users')) ?? []);
- const [filterQuery, setFilter] = useState('');
 
  function createUser (data) {
     let namesOfUsers = [];
@@ -33,13 +32,6 @@ export const App = () => {
     localStorage.setItem('users', JSON.stringify(contacts));
   }, [contacts])
 
-  
-  function filterContacts () {
-    const normalizedFilter = filterQuery.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
 
  function deleteContact ({ target }) {
     setContacts(prev => prev.filter(contact => contact.id !== target.id),
@@ -51,8 +43,8 @@ export const App = () => {
           <h1>Phonebook</h1>
           <AddContactForm createUser={createUser} />
           <h2>Contacts</h2>
-          <Filter value={filterQuery} onChange={(e) => setFilter( e.target.value )} />
-          {ListOfContacts(filterContacts(), deleteContact)}
+          <Filter/>
+          {ListOfContacts(contacts, deleteContact)}
         </div>
     );
   

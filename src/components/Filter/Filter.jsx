@@ -1,8 +1,14 @@
 import React from 'react';
 import css from './Filter.module.css'
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { filterContacts } from '../../redux/filterSlice';
 
-const Filter = ({value, onChange}) => {
+const Filter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(filterContacts);
+  const handleFilter = (event) => dispatch(filterContacts(event.target.value));
+
   return (
     <label>
       <input
@@ -10,16 +16,11 @@ const Filter = ({value, onChange}) => {
         name="filter"
         placeholder="Search..."
         type="search"
-        value={value}
-        onChange={onChange}
+        onChange={handleFilter}
       />
     </label>
   );
 };
 
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
 
 export default Filter;
