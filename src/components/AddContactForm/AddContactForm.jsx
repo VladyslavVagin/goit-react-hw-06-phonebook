@@ -23,8 +23,9 @@ const AddContactForm = () => {
     if (!contNames.includes(data.name)) {
       dispatch(addUser(data));
       resetForm();
+    } else {
+      alert('Contact with the same name has already exist!')
     }
-    alert('Contact with the same name has already exist!')
   };
 
   return (
