@@ -1,13 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import css from './AddContactForm.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../../redux/contactsSlice';
 
 const initialValues = {
   name: '',
   number: '',
-}
+};
 
 const schema = yup.object().shape({
   name: yup.string().min(5).required(),
@@ -16,18 +16,24 @@ const schema = yup.object().shape({
 
 const AddContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
 
-  const handleSubmit = (data, {resetForm}) => {
-     dispatch(addUser(data));
-     resetForm();
-  }
+  const handleSubmit = (data, { resetForm }) => {
+    const contNames = contacts.map(contact => contact.name);
+    if (!contNames.includes(data.name)) {
+      dispatch(addUser(data));
+      resetForm();
+    }
+    alert('Contact with the same name has already exist!')
+  };
 
   return (
-    <Formik validationSchema={schema} initialValues={initialValues} onSubmit={handleSubmit}>
-      <Form
-        className={css.contactForm}
-        autoComplete="true"
-      >
+    <Formik
+      validationSchema={schema}
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+    >
+      <Form className={css.contactForm} autoComplete="true">
         <label className={css.label} htmlFor="name">
           <Field
             type="text"
