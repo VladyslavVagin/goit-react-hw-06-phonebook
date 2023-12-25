@@ -11,25 +11,34 @@ const ListOfContacts = () => {
   const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.query)); 
 
   return (
-    <div>
-      <ul className={css.contactList}>
+    <div className={css.tableContainer}>
+      <table className={css.table}>
+        <thead>
+           <tr>
+            <th className={css.th}>Name</th>
+            <th className={css.th}>Phone</th>
+            <th className={css.th}>Remove</th>
+           </tr>
+        </thead>
+        <tbody className={css.tbody}>
         {filteredContacts.map(({id, name, number}) => {
-          return (
-            <li key={id} className={css.user}>
-              <h3>{name}</h3>
-              <p>{number}</p>
-              <button
+          return ( 
+            <tr key={id} className={css.tr}>
+               <td className={css.td}>{name}</td>
+               <td className={css.td}>{number}</td>
+               <td className={css.td}> <button
                 type="button"
                 className={css.deleteBtn}
                 id={id}
                 onClick={() => dispatch(deleteUser(id))}
               >
-                <img src={trashIcon} alt='trash icon' width={20}/>
-              </button>
-            </li>
+                <img src={trashIcon} alt='trash icon' width={16}/>
+              </button></td>
+            </tr>
           );
         })}
-      </ul>
+        </tbody>
+      </table>
     </div>
   );
 };

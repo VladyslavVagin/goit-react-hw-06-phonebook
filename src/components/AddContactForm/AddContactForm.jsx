@@ -12,7 +12,7 @@ const initialValues = {
 };
 
 const schema = yup.object().shape({
-  name: yup.string().min(5).required(),
+  name: yup.string().min(5).max(24).required(),
   number: yup.number().required(),
 });
 
@@ -55,6 +55,7 @@ const AddContactForm = () => {
             className={css.input}
             required
             placeholder="Number"
+            pattern="[0-9]{1,14}"
           />
           <ErrorMessage name="number" component="span" />
         </label>
