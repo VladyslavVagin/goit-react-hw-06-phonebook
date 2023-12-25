@@ -31,7 +31,7 @@ p {
   max-width: 400px;
   width: 95%;
   border-radius: 34px;
-  background: #ebe6e6;
+  background: #ebe7e7;
   box-shadow: 6px 6px 10px #848181, -6px -6px 10px #ffffff;
 }
 
@@ -39,4 +39,8 @@ h1 {
   font-family: Verdana, sans-serif;
   text-shadow: 3px 3px 2px rgb(48, 47, 47);
   color: #535050;
+}
+
+h2 {
+  color: #848181;
 }

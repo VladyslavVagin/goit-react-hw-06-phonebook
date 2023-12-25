@@ -38,32 +38,31 @@ const AddContactForm = () => {
       onSubmit={handleSubmit}
     >
       <Form className={css.contactForm} autoComplete="true">
-        <label className={css.label} htmlFor="name">
+        <label className={css.label} htmlFor="name"><span className={css.astericks}>&#42;</span>Name:
           <Field
             type="text"
             name="name"
             className={css.input}
             required
-            placeholder="Name"
           />
+          <span className={css.additional}>(5 - 24) symbols</span>
           <ErrorMessage name="name" component="span" />
         </label>
-        <label className={css.label} htmlFor="number">
+        <label className={css.label} htmlFor="number"><span className={css.astericks}>&#42;</span>Phone number:
           <Field
             type="tel"
             name="number"
             className={css.input}
             required
-            placeholder="Number"
             pattern="[0-9]{1,14}"
           />
-          <ErrorMessage name="number" component="span" />
+          <span className={css.additional}>(1 - 14) symbols</span>{' '}
+          <ErrorMessage name="number" component="span" />{' '}
         </label>
         <button className={css.addContactBtn} type="submit">
           Add contact
         </button>
       </Form>
- 
     </Formik>
   );
 };
