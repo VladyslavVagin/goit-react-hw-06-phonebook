@@ -7,8 +7,9 @@
   outline: none;
   border: none;
   line-height: 1.15;
-  background: #ebe6e6;
-  box-shadow: inset 5px 5px 10px #a7a3a3, inset -5px -5px 10px #ffffff;
+  border-radius: 0px;
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  box-shadow: 5px 5px 10px #7d7d7d, -5px -5px 10px #ffffff;
 }
 
 .filter:focus {
