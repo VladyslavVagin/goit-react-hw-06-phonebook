@@ -8,21 +8,21 @@ const ListOfContacts = () => {
   const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
 
-  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.query));
+  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.query)); 
 
   return (
     <div>
       <ul className={css.contactList}>
-        {filteredContacts.map(({name, number, id}) => {
+        {filteredContacts.map(({id, name, number}) => {
           return (
-            <li className={css.user} key={id}>
+            <li key={id} className={css.user}>
               <h3>{name}</h3>
               <p>{number}</p>
               <button
                 type="button"
                 className={css.deleteBtn}
                 id={id}
-                onClick={() => dispatch(deleteUser(contacts))}
+                onClick={() => dispatch(deleteUser(id))}
               >
                 <img src={trashIcon} alt='trash icon' width={20}/>
               </button>

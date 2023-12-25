@@ -20,8 +20,7 @@ export const contactsSlice = createSlice({
       },
     },
     deleteUser(state, action) {
-      const contact = state.filter(user => user.id === action.payload);
-      state.splice(contact, 1);
+     return state = state.filter(contact => contact.id !== action.payload);
     },
   },
 });
