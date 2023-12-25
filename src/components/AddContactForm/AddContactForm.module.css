@@ -1,11 +1,10 @@
-
 .contactForm {
-    width: 90%;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 12px;
+  width: 90%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 12px;
 }
 
 .label {
@@ -19,53 +18,42 @@
   outline: none;
   border-radius: 15px;
   padding: 1em;
-  background-color: #ccc;
-  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
-  transition: 300ms ease-in-out;
+  background: #ebe6e6;
+  box-shadow: inset 5px 5px 10px #a7a3a3, inset -5px -5px 10px #ffffff;
+  transition: all 400ms ease;
 }
 
 .input:focus {
-  background-color: white;
-  transform: scale(1.05);
-  box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
+  background: linear-gradient(145deg, #fbf6f6, #d4cfcf);
+  box-shadow: 5px 5px 10px #a7a3a3, -5px -5px 10px #a898e2;
 }
 
 .addContactBtn {
   width: 130px;
   height: 40px;
-  color: #fff;
+  color: #353232;
   border-radius: 5px;
   padding: 10px 25px;
   font-family: 'Lato', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
-  outline: none;
-  background: rgb(6, 14, 131);
-  background: linear-gradient(
-    0deg,
-    rgba(6, 14, 131, 1) 0%,
-    rgba(12, 25, 180, 1) 100%
-  );
+  border-radius: 103px;
+  background: linear-gradient(145deg, #d4cfcf, #fbf6f6);
+  box-shadow: 9px 9px 18px #6a6767, -9px -9px 18px #ffffff;
   border: none;
   margin-top: 16px;
 }
 
 .addContactBtn:focus,
 .addContactBtn:hover {
-  background: rgb(0, 3, 255);
-  background: linear-gradient(
-    0deg,
-    rgb(0, 17, 255) 0%,
-    rgba(2, 126, 251, 1) 100%
-  );
+  transform: scale(1.1);
 }
 
 span {
   color: red;
+  font-size: 0.625rem;
 }

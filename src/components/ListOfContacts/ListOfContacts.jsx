@@ -1,6 +1,7 @@
 import css from './ListOfContacts.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUser } from '../../redux/contactsSlice';
+import trashIcon from '../../icons/trash.png';
 
 const ListOfContacts = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const ListOfContacts = () => {
                 id={id}
                 onClick={() => dispatch(deleteUser(contacts))}
               >
-                Delete
+                <img src={trashIcon} alt='trash icon' width={20}/>
               </button>
             </li>
           );
