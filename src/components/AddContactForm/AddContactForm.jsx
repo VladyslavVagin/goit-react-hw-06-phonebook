@@ -3,6 +3,8 @@ import * as yup from 'yup';
 import css from './AddContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../../redux/contactsSlice';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialValues = {
   name: '',
@@ -23,8 +25,9 @@ const AddContactForm = () => {
     if (!contNames.includes(data.name)) {
       dispatch(addUser(data));
       resetForm();
+      toast.success('Contact was ADDED');
     } else {
-      alert('Contact with the same name has already exist!')
+      toast.error('Contact with the same name has already exist!');
     }
   };
 
@@ -59,6 +62,7 @@ const AddContactForm = () => {
           Add contact
         </button>
       </Form>
+ 
     </Formik>
   );
 };
